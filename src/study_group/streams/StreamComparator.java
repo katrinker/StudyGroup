@@ -1,4 +1,4 @@
-package study_group;
+package study_group.streams;
 
 import java.util.Comparator;
 

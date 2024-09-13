@@ -2,6 +2,8 @@ package study_group;
 
 import study_group.groups.ServiceStudyGroup;
 import study_group.groups.StudyGroup;
+import study_group.streams.Stream;
+import study_group.streams.StreamService;
 
 import java.util.ArrayList;
 import java.util.List;
