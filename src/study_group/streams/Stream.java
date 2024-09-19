@@ -1,6 +1,6 @@
 package study_group.streams;
 
-import study_group.groups.StudyGroup;
+import study_group.service.StudyGroup;
 
 import java.util.ArrayList;
 import java.util.Iterator;

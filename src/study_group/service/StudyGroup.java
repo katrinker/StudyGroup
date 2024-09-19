@@ -1,16 +1,15 @@
-package study_group.groups;
+package study_group.service;
 
-import study_group.students.Student;
-import study_group.students.StudentComparatorByAge;
-import study_group.students.StudentComparatorByName;
-import study_group.students.StudentIterator;
+import study_group.sort.UserComparatorByAge;
+import study_group.sort.UserComparatorByName;
+import study_group.sort.StudentIterator;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class StudyGroup implements Iterable<Student> {
-    private List<Student> studentList;
+public class StudyGroup<E extends StudyGroupElement> implements Iterable<E> {
+    private List<E> list;
     private int studyGroupID;
     private String nameGroup;
 
@@ -28,19 +27,23 @@ public class StudyGroup implements Iterable<Student> {
     }
 
     public StudyGroup() {
-        studentList = new ArrayList<>();
+        list = new ArrayList<>();
     }
 
-    public void addStudent(Student student){
-        studentList.add(student);
+    public void addStudent(E student){
+        list.add(student);
+    }
+
+    public List<E> getList(){
+        return list;
     }
 
     public void sortByName(){
-        studentList.sort(new StudentComparatorByName());
+        list.sort(new UserComparatorByName<>());
     }
 
     public void sortByAge(){
-        studentList.sort(new StudentComparatorByAge());
+        list.sort(new UserComparatorByAge<>());
     }
 
     @Override
@@ -49,7 +52,7 @@ public class StudyGroup implements Iterable<Student> {
     }
 
     @Override
-    public Iterator<Student> iterator() {
-        return new StudentIterator(studentList);
+    public Iterator<E> iterator() {
+        return (Iterator<E>) new StudentIterator<>(list);
     }
 }
